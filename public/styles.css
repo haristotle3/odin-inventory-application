@@ -1,0 +1,83 @@
+:root {
+  --pink-red: rgb(245, 19, 79);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.topnav-links {
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+  font-size: 1.5rem;
+}
+
+.topnav-items {
+  padding: 0.5rem;
+}
+
+header #topnav-open-btn,
+header #topnav-close-btn {
+  background: none;
+  border: none;
+}
+
+#topnav-open-btn img,
+#topnav-close-btn img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+@media (width >= 40em) {
+  #topnav-open-btn,
+  #topnav-close-btn {
+    display: none;
+  }
+}
+
+@media (width < 40em) {
+  .topnav-menu {
+    background-color: var(--pink-red);
+    position: fixed;
+    inset: 0;
+    padding: 1.5rem;
+    translate: 100vw 0;
+    transition: translate 0.5s ease-in-out;
+  }
+
+  .topnav-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #topnav-close-btn {
+    display: block;
+    margin-left: auto;
+    margin-bottom: 6rem;
+  }
+
+  #topnav-open-btn[aria-expanded="true"] + .topnav-menu {
+    translate: 0;
+  }
+}
+
+@media (width < 40em) and (prefers-reduced-motion) {
+  .topnav-menu {
+    translate: 0;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+  }
+
+  #topnav-open-btn[aria-expanded="true"] + .topnav-menu {
+    opacity: 1;
+  }
+}
