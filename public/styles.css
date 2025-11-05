@@ -17,6 +17,7 @@
 .topnav-links {
   list-style-type: none;
   display: flex;
+  align-items: flex-end;
   gap: 1rem;
   font-size: 1.5rem;
 }
@@ -35,6 +36,57 @@ header #topnav-close-btn {
 #topnav-close-btn img {
   width: 2.5rem;
   height: 2.5rem;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.trainers {
+  margin: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 18em));
+  gap: 1.2em;
+  justify-content: center;
+}
+
+.trainers li ul,
+ul.trainers {
+  list-style-type: none;
+}
+
+.trainer {
+  border: 2px solid black;
+  text-align: center;
+  height: 30em;
+
+  overflow: hidden;
+  border-radius: 1em;
+}
+
+.trainer-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.trainer-details li:last-child {
+  margin: auto 0;
+}
+
+.trainer-name {
+  font-size: 2rem;
+}
+
+.trainer-description {
+  padding: 1em;
+  text-align: justify;
+  font-size: 1rem;
+  text-overflow: ellipsis;
 }
 
 @media (width >= 40em) {
