@@ -1,0 +1,13 @@
+<ul class="trainers">
+  <% rows.forEach((row) => { %>
+  <li class="trainer">
+    <ul class="trainer-details">
+      <li>
+        <img src="<%= row.image_path %>" alt="Image of <%= row.name %>" />
+      </li>
+      <li class="trainer-name"><%= row.name %></li>
+      <li class="trainer-description"><%= row.description %></li>
+    </ul>
+  </li>
+  <% }) %>
+</ul>
