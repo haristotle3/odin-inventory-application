@@ -2,7 +2,7 @@ export const initTrainers = [
   {
     name: "Ash Ketchum",
     description:
-      "A Pokémon Trainer from Pallet Town whose goal is to become a Pokémon Master. His first Pokémon was a Pikachu that he received from Professor Oak after arriving late at his laboratory. On his journeys around the Pokémon world, he's been accompanied by a multitude of close friends.",
+      "A Pokémon Trainer from Pallet Town whose goal is to become a Pokémon Master. His first Pokémon was a Pikachu that he received from Professor Oak after arriving late at his laboratory.",
     imagePath: "/images/trainers/trainer_ash.png",
   },
   {
@@ -20,7 +20,7 @@ export const initTrainers = [
   {
     name: "May",
     description:
-      "A Pokémon Coordinator from the Hoenn region and the daughter of Petalburg City Gym Leader Norman. Initially uninterested in Pokémon battles, she discovers her passion for Pokémon Contests during her journey with Ash and aspires to become a Top Coordinator.",
+      "A Pokémon Coordinator from the Hoenn region and the daughter of Petalburg City Gym Leader Norman. She discovered her passion for Pokémon Contests during her journey with Ash and aspires to become a Top Coordinator.",
     imagePath: "/images/trainers/trainer_may.png",
   },
   {
