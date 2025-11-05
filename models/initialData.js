@@ -3,37 +3,37 @@ export const initTrainers = [
     name: "Ash Ketchum",
     description:
       "A Pokémon Trainer from Pallet Town whose goal is to become a Pokémon Master. His first Pokémon was a Pikachu that he received from Professor Oak after arriving late at his laboratory. On his journeys around the Pokémon world, he's been accompanied by a multitude of close friends.",
-    imageName: "trainer_ash.png",
+    imagePath: "/images/trainers/trainer_ash.png",
   },
   {
     name: "Gary Oak",
     description:
       "A Pokémon Researcher from Pallet Town and grandson of Professor Oak. He is a childhood friend of Ash Ketchum and his main rival.",
-    imageName: "trainer_gary.png",
+    imagePath: "/images/trainers/trainer_gary.png",
   },
   {
     name: "Misty",
     description:
       "The Gym Leader of Cerulean City's Gym, known officially as the Cerulean Gym. Gives the Cascade Badge to Trainers who defeat her in battle. Specializes in Water-type Pokémon.",
-    imageName: "trainer_misty.png",
+    imagePath: "/images/trainers/trainer_misty.png",
   },
   {
     name: "May",
     description:
       "A Pokémon Coordinator from the Hoenn region and the daughter of Petalburg City Gym Leader Norman. Initially uninterested in Pokémon battles, she discovers her passion for Pokémon Contests during her journey with Ash and aspires to become a Top Coordinator.",
-    imageName: "trainer_may.png",
+    imagePath: "/images/trainers/trainer_may.png",
   },
   {
     name: "Dawn",
     description:
       "A Pokémon Coordinator from the Sinnoh region who dreams of becoming a Top Coordinator like her mother, Johanna. Traveling with Ash and Brock, she competes in Pokémon Contests and is known for her catchphrase, 'No need to worry!'",
-    imageName: "trainer_dawn.png",
+    imagePath: "/images/trainers/trainer_dawn.png",
   },
   {
     name: "Serena",
     description:
       "A Pokémon Performer from the Kalos region and Ash's childhood friend from Professor Oak's summer camp. She embarks on a journey to discover her dreams, eventually pursuing Pokémon Showcases and developing strong feelings for Ash.",
-    imageName: "trainer_serena.png",
+    imagePath: "/images/trainers/trainer_serena.png",
   },
 ];
 
@@ -44,7 +44,7 @@ export const initPokemon = [
     description:
       "A seed Pokémon that can harness sunlight to grow stronger. Its bulb blooms into a large flower as it matures.",
     trainerName: "Ash Ketchum",
-    imageName: "bulbasaur.png",
+    imagePath: "/images/pokemon/bulbasaur.png",
   },
   {
     name: "Caterpie",
@@ -52,7 +52,7 @@ export const initPokemon = [
     description:
       "A small, worm-like Pokémon that loves to eat leaves. It evolves quickly and is known for its resilience.",
     trainerName: "Misty",
-    imageName: "caterpie.png",
+    imagePath: "/images/pokemon/caterpie.png",
   },
   {
     name: "Charmander",
@@ -60,7 +60,7 @@ export const initPokemon = [
     description:
       "A fiery lizard Pokémon whose tail flame shows its life force. It grows into a fierce dragon-like creature.",
     trainerName: "Gary Oak",
-    imageName: "charmander.png",
+    imagePath: "/images/pokemon/charmander.png",
   },
   {
     name: "Clefairy",
@@ -68,7 +68,7 @@ export const initPokemon = [
     description:
       "A cute Pokémon that is said to come from the moon. It uses its wings to dance under moonlight.",
     trainerName: "Serena",
-    imageName: "clefairy.png",
+    imagePath: "/images/pokemon/clefairy.png",
   },
   {
     name: "Gastly",
@@ -76,7 +76,7 @@ export const initPokemon = [
     description:
       "A gaseous Pokémon that can slip through walls. It often startles people with its eerie presence.",
     trainerName: "Dawn",
-    imageName: "gastly.png",
+    imagePath: "/images/pokemon/gastly.png",
   },
   {
     name: "Growlithe",
@@ -84,7 +84,7 @@ export const initPokemon = [
     description:
       "A loyal and brave puppy Pokémon. It has an excellent sense of smell and fierce loyalty to its trainer.",
     trainerName: "Ash Ketchum",
-    imageName: "growlithe.png",
+    imagePath: "/images/pokemon/growlithe.png",
   },
   {
     name: "Mareep",
@@ -92,7 +92,7 @@ export const initPokemon = [
     description:
       "A wool Pokémon that stores static electricity in its fleece. The fluff lights up when charged.",
     trainerName: "May",
-    imageName: "mareep.png",
+    imagePath: "/images/pokemon/mareep.png",
   },
   {
     name: "Nidoran",
@@ -100,7 +100,7 @@ export const initPokemon = [
     description:
       "A small, spiny Pokémon known for its sharp horn and cautious nature. It comes in both male and female forms.",
     trainerName: "Gary Oak",
-    imageName: "nidoran.png",
+    imagePath: "/images/pokemon/nidoran.png",
   },
   {
     name: "Pidgey",
@@ -108,7 +108,7 @@ export const initPokemon = [
     description:
       "A common bird Pokémon with great navigational skills. It's known for its gentleness and loyalty.",
     trainerName: "Misty",
-    imageName: "pidgey.png",
+    imagePath: "/images/pokemon/pidgey.png",
   },
   {
     name: "Pikachu",
@@ -116,7 +116,7 @@ export const initPokemon = [
     description:
       "A mouse Pokémon that stores electricity in its cheeks. It's Ash's closest companion and mascot of the Pokémon world.",
     trainerName: "Ash Ketchum",
-    imageName: "pikachu.png",
+    imagePath: "/images/pokemon/pikachu.png",
   },
   {
     name: "Sandshrew",
@@ -124,7 +124,7 @@ export const initPokemon = [
     description:
       "A sandy Pokémon that curls into a ball to defend itself. It loves arid environments.",
     trainerName: "Dawn",
-    imageName: "sandshrew.png",
+    imagePath: "/images/pokemon/sandshrew.png",
   },
   {
     name: "Spheal",
@@ -132,7 +132,7 @@ export const initPokemon = [
     description:
       "A round seal Pokémon that loves to roll on ice. It claps when amused and is playful by nature.",
     trainerName: "May",
-    imageName: "spheal.png",
+    imagePath: "/images/pokemon/spheal.png",
   },
   {
     name: "Squirtle",
@@ -140,7 +140,7 @@ export const initPokemon = [
     description:
       "A turtle Pokémon that shoots water from its mouth. It's calm, collected, and loyal to its trainer.",
     trainerName: "Gary Oak",
-    imageName: "squirtle.png",
+    imagePath: "/images/pokemon/squirtle.png",
   },
   {
     name: "Vivillon",
@@ -148,6 +148,6 @@ export const initPokemon = [
     description:
       "A butterfly Pokémon with colorful wings. Its patterns vary depending on its habitat.",
     trainerName: "Serena",
-    imageName: "vivillon.png",
+    imagePath: "/images/pokemon/vivillon.png",
   },
 ];

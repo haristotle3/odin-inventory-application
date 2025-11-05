@@ -1,6 +1,6 @@
+import "dotenv/config";
 import { Pool } from "pg";
 import { initTrainers, initPokemon } from "./initialData.js";
-import getImageFilePath from "./fileHandler.js";
 
 const pool = new Pool({
   user: process.env.LOCAL_DB_USER,
@@ -17,16 +17,14 @@ const queryTrainer = `INSERT INTO trainers (name, description, image_path) VALUE
 const queryPokemon = `INSERT INTO pokemon (name, type, description, trainer_id, image_path) VALUES ($1, $2, $3, $4, $5);`;
 
 for (let trainer of initTrainers) {
-  const imagePath = getImageFilePath(trainer.imageName);
   await pool.query(queryTrainer, [
     trainer.name,
     trainer.description,
-    imagePath,
+    trainer.imagePath,
   ]);
 }
 
 for (let pokemon of initPokemon) {
-  const imagePath = getImageFilePath(pokemon.imageName);
   const { rows } = await pool.query(
     "SELECT id FROM trainers WHERE name = $1;",
     [pokemon.trainerName]
@@ -38,6 +36,6 @@ for (let pokemon of initPokemon) {
     pokemon.type,
     pokemon.description,
     trainerID,
-    imagePath,
+    pokemon.imagePath,
   ]);
 }
