@@ -1,12 +1,15 @@
 <ul class="trainers">
-  <% rows.forEach((row) => { %>
+  <% trainers.forEach((trainer) => { %>
   <li class="trainer">
     <ul class="trainer-details">
       <li>
-        <img src="<%= row.image_path %>" alt="Image of <%= row.name %>" />
+        <img
+          src="<%= trainer.image_path %>"
+          alt="Image of <%= trainer.name %>"
+        />
       </li>
-      <li class="trainer-name"><%= row.name %></li>
-      <li class="trainer-description"><%= row.description %></li>
+      <li class="trainer-name"><%= trainer.name %></li>
+      <li class="trainer-description"><%= trainer.description %></li>
     </ul>
   </li>
   <% }) %>
