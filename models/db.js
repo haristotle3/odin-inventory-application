@@ -60,7 +60,11 @@ class Database {
     return rows;
   }
 
-
+  async addNewPokemon(name, type, description, imagePath, trainerID) {
+    const query = "INSERT INTO pokemon (name, type, description, trainer_id, image_path) VALUES ($1, $2, $3, $4, $5);" 
+    await this.db.query(query, [name, type, description, trainerID, imagePath]);
+    return;
+  }
 }
 
 const db = new Database();
