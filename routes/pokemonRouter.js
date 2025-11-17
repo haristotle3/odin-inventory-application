@@ -1,8 +1,8 @@
 import { Router } from "express";
 import {
-  addPokemonController,
-  pokemonDefaultController,
+  pokemonIndexController,
   pokemonIDController,
+  addPokemonController
 } from "../controllers/pokemonController.js";
 import multer from "multer";
 
@@ -19,8 +19,8 @@ const pokemonStorage = multer.diskStorage({
 const pokemonUpload = multer({ storage: pokemonStorage })
 const pokemonRouter = Router();
 
-pokemonRouter.get("/", pokemonDefaultController);
 pokemonRouter.get("/:id", pokemonIDController);
+pokemonRouter.get("/", pokemonIndexController);
 pokemonRouter.post("/", pokemonUpload.single("photo"), addPokemonController);
 
 export default pokemonRouter;
