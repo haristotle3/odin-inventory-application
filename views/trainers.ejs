@@ -1,18 +1,27 @@
-<ul class="trainers">
-  <% trainers.forEach((trainer) => { %>
-  <a href="trainers/<%= trainer.id %>" class="pokemon-card-link">
-    <li class="trainer">
-      <ul class="trainer-details">
-        <li>
-          <img
-            src="<%= trainer.image_path %>"
-            alt="Image of <%= trainer.name %>"
-          />
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("head") %>
+  <body>
+    <%- include("header") %>
+    <main>
+      <ul class="trainers">
+        <% trainers.forEach((trainer) => { %>
+        <li class="trainer">
+          <a href="/trainers/<%= trainer.id %>" class="pokemon-card-link">
+            <ul class="trainer-details">
+              <li>
+                <img
+                  src="<%= trainer.image_path %>"
+                  alt="Image of <%= trainer.name %>"
+                />
+              </li>
+              <li class="trainer-name"><%= trainer.name %></li>
+              <li class="trainer-description"><%= trainer.description %></li>
+            </ul>
+          </a>
         </li>
-        <li class="trainer-name"><%= trainer.name %></li>
-        <li class="trainer-description"><%= trainer.description %></li>
+        <% }) %>
       </ul>
-    </li>
-  </a>
-  <% }) %>
-</ul>
+    </main>
+  </body>
+</html>

@@ -4,16 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles.css" />
-    <link rel="shortcut icon" href="pikachu.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/pikachu.png" type="image/x-icon" />
     <title>Pokemon Daycare | Home</title>
   </head>
   <body>
     <%- include('header') %>
     <main>
-      <% if(typeof trainers !== 'undefined') { %> <%- include('trainers', {
-      trainers: trainers }) %> <% } %>
+
     </main>
   </body>
-  <script src="https://cdn.jsdelivr.net/gh/rick-liruixin/body-scroll-lock-upgrade@v1.1.0/lib/index.umd.js"></script>
-  <script src="/headerScript.js"></script>
+
 </html>
