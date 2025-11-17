@@ -2,7 +2,9 @@ import "dotenv/config";
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import indexRouter from "./routes/indexRoute.js";
+import { indexRouter } from "./routes/routes.js";
+import trainerRouter from "./routes/trainerRouter.js";
+import pokemonRouter from "./routes/pokemonRouter.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +17,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRouter);
+app.use("/trainers", trainerRouter);
+app.use("/pokemon", pokemonRouter);
 
 app.listen(3000, (error) => {
   if (error) {
