@@ -71,6 +71,12 @@ class Database {
     await this.db.query(query, [pokemonID]);
     return;
   }
+
+  async imagePathDependents(image_path) {
+    const query = "SELECT COUNT(*) FROM pokemon WHERE image_path = $1;";
+    const { rows } = await this.db.query(query, [image_path]);
+    return rows[0].count;
+  }
 }
 
 const db = new Database();
