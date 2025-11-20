@@ -12,6 +12,7 @@ const pool = new Pool({
 
 pool.query("DELETE FROM trainers;");
 pool.query("DELETE FROM pokemon;");
+pool.query("DELETE FROM pokemonTypes;");
 
 const queryTrainer = `INSERT INTO trainers (name, description, image_path) VALUES ($1, $2, $3);`;
 const queryPokemon = `INSERT INTO pokemon (name, type, description, trainer_id, image_path) VALUES ($1, $2, $3, $4, $5);`;
@@ -39,3 +40,31 @@ for (let pokemon of initPokemon) {
     pokemon.imagePath,
   ]);
 }
+
+const pokemonTypes = [
+  "Normal",
+  "Fire",
+  "Water",
+  "Electric",
+  "Grass",
+  "Ice",
+  "Fighting",
+  "Poison",
+  "Ground",
+  "Flying",
+  "Psychic",
+  "Bug",
+  "Rock",
+  "Ghost",
+  "Dragon",
+  "Dark",
+  "Steel",
+  "Fairy",
+  "Stellar"
+];
+
+const queryPokemonType = "INSERT INTO pokemonTypes (type) VALUES ($1);"
+
+pokemonTypes.forEach((type) => {
+  pool.query(queryPokemonType, [type])
+})

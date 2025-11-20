@@ -55,7 +55,7 @@ class Database {
   }
 
   async getAllPokemonTypes() {
-    const query = "SELECT DISTINCT type FROM pokemon;";
+    const query = "SELECT DISTINCT type FROM pokemonTypes;";
     const { rows } = await this.db.query(query);
     return rows;
   }
