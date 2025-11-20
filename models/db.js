@@ -65,6 +65,12 @@ class Database {
     await this.db.query(query, [name, type, description, trainerID, imagePath]);
     return;
   }
+
+  async deletePokemon(pokemonID) {
+    const query = "DELETE FROM pokemon WHERE pokemon.id = $1;";
+    await this.db.query(query, [pokemonID]);
+    return;
+  }
 }
 
 const db = new Database();
