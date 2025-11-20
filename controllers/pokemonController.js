@@ -81,9 +81,9 @@ export async function addPokemonController(req, res) {
 }
 
 export async function verifyDestructiveAction(req, res) {
-  const { deletePassword } = req.body;
+  const { destructivePassword } = req.body;
 
-  if (deletePassword === process.env.DESTRUCTIVE_PASSWORD) res.sendStatus(200);
+  if (destructivePassword === process.env.DESTRUCTIVE_PASSWORD) res.sendStatus(200);
   else res.sendStatus(401);
 }
 
