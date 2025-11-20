@@ -108,3 +108,10 @@ export async function deletePokemonController(req, res) {
 
   res.sendStatus(204);
 }
+
+export async function updatePokemonController(req, res) {
+  const pokemonID = req.params.id;
+  const { pokemonName, type, description } = req.body;
+  await db.updatePokemon(pokemonID, pokemonName, type, description);
+  res.sendStatus(204);
+}
