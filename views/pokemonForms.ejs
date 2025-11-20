@@ -35,7 +35,11 @@
         <input name="name" type="text" id="name">
   
         <label for="type">Type: </label>
-        <input name="type" type="text" id="type">
+        <select name="type" id="type">
+          <% pokemonTypes.forEach((row) => { %>
+          <option value="<%=row.type%>"><%=row.type%></option>
+          <% }) %>
+        </select>
   
         <label for="description">Description: </label>
         <textarea name="description" id="description"></textarea>
