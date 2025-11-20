@@ -1,4 +1,7 @@
 import db from "../models/db.js";
+import { unlink } from "fs/promises";
+import path from "path"
+import { fileURLToPath } from "url";
 
 async function searchPokemonController(req, res) {
   const rows = await db.searchPokemon(req.query.search);
@@ -20,8 +23,6 @@ async function filterPokemonController(req, res) {
   const rows = await db.filterPokemon(filterType, filterTrainerID);
   const types = await db.getAllPokemonTypes();
   const trainerIDsNames = await db.getAllTrainerNameAndIDs();
-
-  console.log(rows)
 
   res.render("pokemon", {
     pokemon: rows,
@@ -45,7 +46,7 @@ async function pokemonDefaultController(req, res) {
 }
 
 export async function pokemonIndexController(req, res) {
-  if(req.query.search) {
+  if (req.query.search) {
     await searchPokemonController(req, res);
   } else if (req.query.type || req.query.trainerID) {
     await filterPokemonController(req, res);
@@ -55,12 +56,12 @@ export async function pokemonIndexController(req, res) {
 }
 
 export async function pokemonIDController(req, res) {
-  const row = await db.getPokemonByID(req.params.id);
+  const rows = await db.getPokemonByID(req.params.id);
   const types = await db.getAllPokemonTypes();
   const trainerIDsNames = await db.getAllTrainerNameAndIDs();
 
-  res.render("pokemon", {
-    pokemon: row,
+  res.render("individualPokemon", {
+    pokemon: rows[0],
     pokemonTypes: types,
     trainerIDsNames: trainerIDsNames,
     selected: req.query.type || "None",
@@ -73,5 +74,31 @@ export async function addPokemonController(req, res) {
   const imagePath = "/images/pokemon/" + photoName;
 
   await db.addNewPokemon(name, type, description, imagePath, trainerID);
-  res.render("index.ejs");
+  await pokemonDefaultController(req, res);
+
+  return;
+}
+
+export async function verifyDestructiveAction(req, res) {
+  const { deletePassword } = req.body;
+
+  if (deletePassword === process.env.DESTRUCTIVE_PASSWORD)
+    res.sendStatus(200);
+  else res.sendStatus(401);
+}
+
+export async function deletePokemonController(req, res) {
+  const pokemonID = req.params.id;
+
+  const rows = await db.getPokemonByID(pokemonID);
+  const __filename = fileURLToPath(import.meta.url)
+  const __dirname = path.dirname(path.dirname(__filename))
+
+  const image_path = rows[0].image_path;
+  const absolute_path = path.join(__dirname, "public", image_path);
+
+  await unlink(absolute_path);
+  await db.deletePokemon(pokemonID);
+
+  res.sendStatus(204);
 }
