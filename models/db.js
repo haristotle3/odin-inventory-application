@@ -77,6 +77,11 @@ class Database {
     const { rows } = await this.db.query(query, [image_path]);
     return rows[0].count;
   }
+
+  async updatePokemon(pokemonID, name, type, description) {
+    const query = "UPDATE pokemon SET name = $1, type = $2, description = $3 WHERE id = $4;";
+    await this.db.query(query, [name, type, description, pokemonID]);
+  }
 }
 
 const db = new Database();
