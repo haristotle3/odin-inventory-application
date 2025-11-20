@@ -4,7 +4,8 @@ import {
   pokemonIDController,
   addPokemonController,
   verifyDestructiveAction,
-  deletePokemonController
+  deletePokemonController,
+  updatePokemonController
 } from "../controllers/pokemonController.js";
 import multer from "multer";
 
@@ -24,6 +25,7 @@ const pokemonRouter = Router();
 pokemonRouter.get("/:id", pokemonIDController);
 pokemonRouter.post("/:id", verifyDestructiveAction);
 pokemonRouter.delete("/:id", deletePokemonController);
+pokemonRouter.patch("/:id", updatePokemonController);
 
 pokemonRouter.get("/", pokemonIndexController);
 pokemonRouter.post("/", pokemonUpload.single("photo"), addPokemonController);
