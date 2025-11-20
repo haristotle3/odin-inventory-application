@@ -1,6 +1,7 @@
 import db from "../models/db.js";
 import { unlink } from "fs/promises";
-import path from "path"
+import path from "path";
+import { debugPort } from "process";
 import { fileURLToPath } from "url";
 
 async function searchPokemonController(req, res) {
@@ -82,23 +83,28 @@ export async function addPokemonController(req, res) {
 export async function verifyDestructiveAction(req, res) {
   const { deletePassword } = req.body;
 
-  if (deletePassword === process.env.DESTRUCTIVE_PASSWORD)
-    res.sendStatus(200);
+  if (deletePassword === process.env.DESTRUCTIVE_PASSWORD) res.sendStatus(200);
   else res.sendStatus(401);
+}
+
+async function deleteImage(image_path) {
+  const dependentPokemon = await db.imagePathDependents(image_path);
+  if (dependentPokemon > 0) return;
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(path.dirname(__filename));
+  const absolute_path = path.join(__dirname, "public", image_path);
+  await unlink(absolute_path);
 }
 
 export async function deletePokemonController(req, res) {
   const pokemonID = req.params.id;
-
   const rows = await db.getPokemonByID(pokemonID);
-  const __filename = fileURLToPath(import.meta.url)
-  const __dirname = path.dirname(path.dirname(__filename))
 
   const image_path = rows[0].image_path;
-  const absolute_path = path.join(__dirname, "public", image_path);
 
-  await unlink(absolute_path);
   await db.deletePokemon(pokemonID);
+  await deleteImage(image_path);
 
   res.sendStatus(204);
 }
