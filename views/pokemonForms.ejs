@@ -1,0 +1,65 @@
+<!-- Filter Pokemon -->
+    <form action="/pokemon" method="GET">
+      <label for="type">Type:</label>
+      <select name="type" id="type">
+        <option value="None" <%= selected === "None" ? 'selected' : '' %> >None</option>
+        <% pokemonTypes.forEach((row) => { %>
+        <option value="<%=row.type%>" <%= selected === row.type ? "selected" : "" %> ><%=row.type %></option>
+        <% }); %>
+      </select>
+
+      <label for="trainerID">Trainer ID:</label>
+      <select name="trainerID" id="trainerID">
+        <option value="None">None</option>
+        <% trainerIDsNames.forEach((row) => { %>
+        <option value="<%=row.id %>"><%=row.id %></option>
+        <% }); %>
+      </select>
+  
+      <input type="submit" value="Apply Filter">
+    </form>
+
+    <!-- Search Pokemon -->
+    <form action="/pokemon" method="GET">
+      <label for="search">Search</label>
+      <input type="text" name="search" id="search">
+      <input type="submit" value="Search">
+    </form>
+
+    <button id="openDialogButton">Add Pokemon</button>
+
+    <!-- Add Pokemon -->
+    <dialog id="addPokemonDialog">
+      <form action="/pokemon" method="POST" enctype="multipart/form-data">
+        <label for="name">Name: </label>
+        <input name="name" type="text" id="name">
+  
+        <label for="type">Type: </label>
+        <input name="type" type="text" id="type">
+  
+        <label for="description">Description: </label>
+        <textarea name="description" id="description"></textarea>
+  
+        <label for="trainerID">Trainer ID:</label>
+        <select name="trainerID" id="trainerID">
+          <% trainerIDsNames.forEach((row) => { %>
+          <option value="<%=row.id %>"><%=row.name %> (#<%=row.id %>)</option>
+          <% }); %>
+        </select>
+  
+        <label for="photo">Photo</label>
+        <input name="photo" type="file" accept="image/png">
+  
+        <input type="submit" value="Add Pokemon">
+      </form>
+    </dialog>
+
+    <script>
+        const openDialogButton = document.getElementById("openDialogButton");
+        const dialog = document.getElementById("addPokemonDialog");
+
+        openDialogButton.addEventListener("click", () => {
+          dialog.showModal();
+        });
+    </script>
+      
