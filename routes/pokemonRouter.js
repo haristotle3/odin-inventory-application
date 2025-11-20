@@ -2,7 +2,9 @@ import { Router } from "express";
 import {
   pokemonIndexController,
   pokemonIDController,
-  addPokemonController
+  addPokemonController,
+  verifyDestructiveAction,
+  deletePokemonController
 } from "../controllers/pokemonController.js";
 import multer from "multer";
 
@@ -20,6 +22,9 @@ const pokemonUpload = multer({ storage: pokemonStorage })
 const pokemonRouter = Router();
 
 pokemonRouter.get("/:id", pokemonIDController);
+pokemonRouter.post("/:id", verifyDestructiveAction);
+pokemonRouter.delete("/:id", deletePokemonController);
+
 pokemonRouter.get("/", pokemonIndexController);
 pokemonRouter.post("/", pokemonUpload.single("photo"), addPokemonController);
 
