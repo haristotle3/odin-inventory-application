@@ -9,6 +9,7 @@
         class="trainerDestructivePassword"
         name="destructivePassword"
         type="password"
+        required
       />
     </label>
     <label for="deleteTrainer">
@@ -23,13 +24,14 @@
   <form>
     <label>
       New Name:
-      <input name="updatedTrainerName" type="text" />
+      <input name="updatedTrainerName" type="text" required />
     </label>
     <label>
       Update Description:
       <textarea
         name="updatedTrainerDescription"
         id="updatedTrainerDescription"
+        required
       ></textarea>
     </label>
     <label for="trainerDestructivePassword">
@@ -38,6 +40,7 @@
         class="trainerDestructivePassword"
         name="destructivePassword"
         type="password"
+        required
       />
     </label>
     <input type="submit" value="Update" />

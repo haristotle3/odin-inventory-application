@@ -1,7 +1,7 @@
 <form action="/trainers" method="GET">
   <label for="trainerName">
     Name:
-    <input id="trainerName" type="text" name="trainerName" />
+    <input id="trainerName" type="text" name="trainerName" required/>
   </label>
   <input type="submit" value="Search" />
 </form>
@@ -10,15 +10,15 @@
   <form action="/trainers" method="POST" enctype="multipart/form-data">
     <label for="newTrainerName">
       Trainer Name:
-      <input id="newTrainerName" name="newTrainerName" type="text" />
+      <input id="newTrainerName" name="newTrainerName" type="text" required />
     </label>
     <label for="trainerDescription">
       Description:
-      <textarea name="trainerDescription" id="trainerDescription"></textarea>
+      <textarea name="trainerDescription" id="trainerDescription" required></textarea>
     </label>
     <label for="trainerPhoto">
       Add image:
-      <input name="trainerPhoto" type="file" accept="image/png" />
+      <input name="trainerPhoto" type="file" accept="image/png" required/>
     </label>
     <input type="submit" value="Add Trainer">
   </form>

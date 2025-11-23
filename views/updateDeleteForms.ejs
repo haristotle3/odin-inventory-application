@@ -8,6 +8,7 @@
         type="password"
         class="destructivePassword"
         name="destructivePassword"
+        required
       />
     </label>
 
@@ -22,7 +23,7 @@
 <!-- Update pokemon form -->
 <dialog id="updatePokemonDialog">
   <form>
-    <label for="pokemonName"> Name: <input type="text" /> </label>
+    <label for="pokemonName"> Name: <input type="text" required /> </label>
     <label for="type">
       Type:
       <select name="type">
@@ -31,7 +32,7 @@
         <% }) %>
       </select>
     </label>
-    <textarea name="description" id="updateDescription"></textarea>
+    <textarea name="description" id="updateDescription" required></textarea>
     <label for="destructivePassword">
       Password:<input
         type="password"
