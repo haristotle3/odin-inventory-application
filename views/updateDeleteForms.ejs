@@ -1,162 +1,146 @@
-      <button id="deletePokemonButton">Delete Pokemon</button>
-      <button id="updatePokemonButton">Update Pokemon</button>
+<button id="deletePokemonButton">Delete Pokemon</button>
+<button id="updatePokemonButton">Update Pokemon</button>
 <!-- Delete pokemon form -->
-      <dialog id="deletePokemonDialog">
-        <form>
-          <label for="destructivePassword">
-            Password:<input
-              type="password"
-              class="destructivePassword"
-              name="destructivePassword"
-            />
-          </label>
+<dialog id="deletePokemonDialog">
+  <form>
+    <label for="destructivePassword">
+      Password:<input
+        type="password"
+        class="destructivePassword"
+        name="destructivePassword"
+      />
+    </label>
 
-          <label id="confirmationLabel">Are you sure you want to delete?</label>
-          <input
-            type="submit"
-            value="Yes"
-            aria-labelledby="confirmationLabel"
-          />
-          <button
-            id="closeDeletePokemonDialog"
-            aria-labelledby="confirmationLabel"
-          >
-            No
-          </button>
-        </form>
-      </dialog>
+    <label id="confirmationLabel">Are you sure you want to delete?</label>
+    <input type="submit" value="Yes" aria-labelledby="confirmationLabel" />
+    <button id="closeDeletePokemonDialog" aria-labelledby="confirmationLabel">
+      No
+    </button>
+  </form>
+</dialog>
 
-      <!-- Update pokemon form -->
-      <dialog id="updatePokemonDialog">
-        <form>
-          <label for="pokemonName"> Name: <input type="text" /> </label>
-          <label for="type">
-            Type:
-            <select name="type">
-              <% pokemonTypes.forEach((row) => { %>
-              <option value="<%=row.type%>"><%=row.type%></option>
-              <% }) %>
-            </select>
-          </label>
-          <textarea name="description" id="updateDescription"></textarea>
-          <label for="destructivePassword">
-            Password:<input
-              type="password"
-              class="destructivePassword"
-              name="destructivePassword"
-            />
-          </label>
+<!-- Update pokemon form -->
+<dialog id="updatePokemonDialog">
+  <form>
+    <label for="pokemonName"> Name: <input type="text" /> </label>
+    <label for="type">
+      Type:
+      <select name="type">
+        <% pokemonTypes.forEach((row) => { %>
+        <option value="<%=row.type%>"><%=row.type%></option>
+        <% }) %>
+      </select>
+    </label>
+    <textarea name="description" id="updateDescription"></textarea>
+    <label for="destructivePassword">
+      Password:<input
+        type="password"
+        class="destructivePassword"
+        name="destructivePassword"
+      />
+    </label>
 
-          <input type="submit" value="Update" />
-          <button id="closeUpdatePokemonDialog">Cancel</button>
-        </form>
-      </dialog>
-    </main>
+    <input type="submit" value="Update" />
+    <button id="closeUpdatePokemonDialog">Cancel</button>
+  </form>
+</dialog>
 
-    <script>
-      const deletePokemonButton = document.querySelector(
-        "#deletePokemonButton"
-      );
-      const deleteFormCloseButton = document.querySelector(
-        "#closeDeletePokemonDialog"
-      );
-      const deletePokemonDialog = document.querySelector(
-        "#deletePokemonDialog"
-      );
-      const deletePokemonForm = document.querySelector(
-        "#deletePokemonDialog > form"
-      );
+<script>
+  const deletePokemonButton = document.querySelector("#deletePokemonButton");
+  const deleteFormCloseButton = document.querySelector(
+    "#closeDeletePokemonDialog"
+  );
+  const deletePokemonDialog = document.querySelector("#deletePokemonDialog");
+  const deletePokemonForm = document.querySelector(
+    "#deletePokemonDialog > form"
+  );
 
-      deletePokemonButton.addEventListener("click", () => {
-        deletePokemonDialog.showModal();
+  deletePokemonButton.addEventListener("click", () => {
+    deletePokemonDialog.showModal();
+  });
+
+  deleteFormCloseButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    deletePokemonForm.reset();
+    deletePokemonDialog.close();
+  });
+
+  deletePokemonForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    const passwordResponse = await fetch("/pokemon/:id", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+
+    if (passwordResponse.ok) {
+      const res = await fetch(window.location.pathname, {
+        method: "DELETE",
       });
 
-      deleteFormCloseButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        deletePokemonForm.reset();
-        deletePokemonDialog.close();
+      if (res.ok) {
+        window.location.href = "/pokemon";
+      }
+    } else {
+      console.log("Password is incorrect!");
+    }
+
+    e.target.reset();
+    deletePokemonDialog.close();
+  });
+
+  const updatePokemonButton = document.querySelector("#updatePokemonButton");
+  const updatePokemonCloseButton = document.querySelector(
+    "#closeUpdatePokemonDialog"
+  );
+  const updatePokemonDialog = document.querySelector("#updatePokemonDialog");
+  const updatePokemonForm = document.querySelector(
+    "#updatePokemonDialog > form"
+  );
+
+  updatePokemonButton.addEventListener("click", () => {
+    updatePokemonDialog.showModal();
+  });
+
+  updatePokemonCloseButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    updatePokemonForm.reset();
+    updatePokemonDialog.close();
+  });
+
+  updatePokemonForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    const passwordResponse = await fetch(window.location.pathname, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (passwordResponse.ok) {
+      const updateResponse = await fetch(window.location.pathname, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
 
-      deletePokemonForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
+      if (updateResponse.ok) {
+        window.location.href = "/pokemon";
+      } else {
+        console.log("Password is incorrect!");
+      }
+    }
 
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
-        const passwordResponse = await fetch("/pokemon/:id", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-
-        if (passwordResponse.ok) {
-          const res = await fetch(window.location.pathname, {
-            method: "DELETE",
-          });
-
-          if (res.ok) {
-            window.location.href = "/pokemon";
-          }
-        } else {
-          console.log("Password is incorrect!");
-        }
-
-        e.target.reset();
-        deletePokemonDialog.close();
-      });
-
-      const updatePokemonButton = document.querySelector(
-        "#updatePokemonButton"
-      );
-      const updatePokemonCloseButton = document.querySelector(
-        "#closeUpdatePokemonDialog"
-      );
-      const updatePokemonDialog = document.querySelector(
-        "#updatePokemonDialog"
-      );
-      const updatePokemonForm = document.querySelector(
-        "#updatePokemonDialog > form"
-      );
-
-      updatePokemonButton.addEventListener("click", () => {
-        updatePokemonDialog.showModal();
-      });
-
-      updatePokemonCloseButton.addEventListener("click", (e) => {
-        e.preventDefault();
-        updatePokemonForm.reset();
-        updatePokemonDialog.close();
-      });
-
-      updatePokemonForm.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
-        const passwordResponse = await fetch(window.location.pathname, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-
-        if (passwordResponse.ok) {
-          const updateResponse = await fetch(window.location.pathname, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-
-          if (updateResponse.ok) {
-            window.location.href = "/pokemon";
-          } else {
-            console.log("Password is incorrect!");
-          }
-        } 
-
-        e.target.reset();
-        updatePokemonDialog.close();
-      });
-    </script>
+    e.target.reset();
+    updatePokemonDialog.close();
+  });
+</script>
