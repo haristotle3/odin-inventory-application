@@ -80,7 +80,7 @@ export async function addPokemonController(req, res) {
 }
 
 async function deleteImage(image_path) {
-  const dependentPokemon = await db.imagePathDependents(image_path);
+  const dependentPokemon = await db.pokemonImagePathDependents(image_path);
   if (dependentPokemon > 0) return;
 
   const __filename = fileURLToPath(import.meta.url);

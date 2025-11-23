@@ -1,4 +1,7 @@
 import db from "../models/db.js";
+import { unlink } from "fs/promises";
+import path from "path";
+import { fileURLToPath } from "url";
 
 export async function trainerDefaultController(req, res) {
   const rows = await db.getAllTrainers();
@@ -21,9 +24,25 @@ export async function addTrainerController(req, res) {
   return;
 }
 
+async function deleteImage(image_path) {
+  const dependentTrainer = await db.trainerImagePathDependents(image_path)
+  if(dependentTrainer > 0) return;
+
+  const __filename = fileUrlToPath(import.meta.url);
+  const __dirname = path.dirname(path.dirname(__filename));
+  const absolute_path = path.join(__dirname, "public", image_path )
+  await unlink(absolute_path)
+}
+
 export async function deleteTrainer(req, res) {
   const trainerID = req.params.id;
+  const rows = await db.getTrainerByID(trainerID);
+
+  const image_path = rows[0].image_path;
+
   await db.deleteTrainer(trainerID)
+  await deleteImage(image_path);
+
   res.sendStatus(204);
 }
 
