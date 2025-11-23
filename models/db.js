@@ -80,7 +80,7 @@ class Database {
     return;
   }
 
-  async imagePathDependents(image_path) {
+  async pokemonImagePathDependents(image_path) {
     const query = "SELECT COUNT(*) FROM pokemon WHERE image_path = $1;";
     const { rows } = await this.db.query(query, [image_path]);
     return rows[0].count;
@@ -109,6 +109,12 @@ class Database {
     const query =
       "UPDATE trainers SET name = $1, description = $2 WHERE id = $3;";
     await this.db.query(query, [newTrainerName, newDescription, trainerID]);
+  }
+
+  async trainerImagePathDependents(image_path) {
+    const query = "SELECT COUNT(*) FROM trainers WHERE image_path = $1;";
+    const { rows } = await this.db.query(query, [image_path]);
+    return rows[0].count;
   }
 }
 
