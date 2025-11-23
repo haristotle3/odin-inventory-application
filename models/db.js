@@ -88,6 +88,12 @@ class Database {
     const query = "UPDATE pokemon SET name = $1, type = $2, description = $3 WHERE id = $4;";
     await this.db.query(query, [name, type, description, pokemonID]);
   }
+
+  async addNewTrainer(newTrainerName, trainerDescription, imagePath) {
+    const query = "INSERT INTO trainers (name, description, image_path) VALUES ($1, $2, $3);"
+    await this.db.query(query, [newTrainerName, trainerDescription, imagePath]);
+    return;
+  }
 }
 
 const db = new Database();
