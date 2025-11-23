@@ -3,7 +3,10 @@ import {
   trainerDefaultController,
   trainerIDController,
   addTrainerController,
+  deleteTrainer,
 } from "../controllers/trainerController.js";
+import { verifyDestructiveAction } from "../controllers/passwordVerificationHelper.js";
+
 import multer from "multer";
 
 const trainerStorage = multer.diskStorage({
@@ -20,6 +23,9 @@ const trainerRouter = Router();
 
 trainerRouter.get("/", trainerDefaultController);
 trainerRouter.post("/", trainerUpload.single("trainerPhoto"), addTrainerController);
+
 trainerRouter.get("/:id", trainerIDController);
+trainerRouter.post("/:id", verifyDestructiveAction);
+trainerRouter.delete("/:id", deleteTrainer);
 
 export default trainerRouter;
