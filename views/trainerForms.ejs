@@ -1,0 +1,36 @@
+<form action="/trainers" method="GET">
+  <label for="trainerName">
+    Name:
+    <input id="trainerName" type="text" name="trainerName" />
+  </label>
+  <input type="submit" value="Search" />
+</form>
+
+<dialog id="addNewTrainerDialog">
+  <form action="/trainers" method="POST" enctype="multipart/form-data">
+    <label for="newTrainerName">
+      Trainer Name:
+      <input id="newTrainerName" name="newTrainerName" type="text" />
+    </label>
+    <label for="trainerDescription">
+      Description:
+      <textarea name="trainerDescription" id="trainerDescription"></textarea>
+    </label>
+    <label for="trainerPhoto">
+      Add image:
+      <input name="trainerPhoto" type="file" accept="image/png" />
+    </label>
+    <input type="submit" value="Add Trainer">
+  </form>
+</dialog>
+
+<button id="addNewTrainerButton">Add New Trainer</button>
+
+<script>
+  const addTrainerButton = document.querySelector("#addNewTrainerButton");
+  const addTrainerDialog = document.querySelector("#addNewTrainerDialog")
+
+  addTrainerButton.addEventListener("click", () => {
+    addTrainerDialog.showModal();
+  })
+</script>
