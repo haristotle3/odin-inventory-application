@@ -26,3 +26,10 @@ export async function deleteTrainer(req, res) {
   await db.deleteTrainer(trainerID)
   res.sendStatus(204);
 }
+
+export async function updateTrainer(req, res) {
+  const trainerID = req.params.id;
+  const { updatedTrainerName, updatedTrainerDescription } = req.body;
+  await db.updateTrainer(trainerID, updatedTrainerName, updatedTrainerDescription)
+  res.sendStatus(204);
+}
