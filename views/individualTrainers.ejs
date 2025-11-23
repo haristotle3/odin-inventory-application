@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("head") %>
+  <body>
+    <%- include("header") %>
+    <main>
+      <%- include("trainerForms")%>
+      <ul class="trainers">
+        <% trainers.forEach((trainer) => { %>
+        <li class="trainer">
+          <a href="/trainers/<%= trainer.id %>" class="pokemon-card-link">
+            <ul class="trainer-details">
+              <li>
+                <img
+                  src="<%= trainer.image_path %>"
+                  alt="Image of <%= trainer.name %>"
+                />
+              </li>
+              <li class="trainer-name"><%= trainer.name %></li>
+              <li class="trainer-description"><%= trainer.description %></li>
+            </ul>
+          </a>
+        </li>
+        <% }) %>
+      </ul>
+
+      <%- include("updateDeleteTrainer") %>
+    </main>
+  </body>
+</html>

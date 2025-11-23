@@ -1,0 +1,65 @@
+<button id="deleteTrainerButton">Delete Trainer</button>
+<button id="updateTrainerButton">Update Trainer</button>
+
+<dialog id="deleteTrainerDialog">
+  <form>
+    <label for="trainerDestructivePassword">
+      Password:
+      <input
+        id="trainerDestructivePassword"
+        name="destructivePassword"
+        type="password"
+      />
+    </label>
+    <input type="submit" value="Yes" />
+    <button id="trainerCancelButton">No</button>
+  </form>
+</dialog>
+
+<script>
+  const closeTrainerDialog = document.querySelector("#trainerCancelButton");
+  const deleteTrainerButton = document.querySelector("#deleteTrainerButton");
+  const deleteTrainerDialog = document.querySelector("#deleteTrainerDialog");
+  const deleteTrainerForm = document.querySelector(
+    "#deleteTrainerDialog > form"
+  );
+
+  const updateTrainerButton = document.querySelector("#updateTrainerButton");
+
+  closeTrainerDialog.addEventListener("click", () => {
+    deleteTrainerDialog.close();
+  });
+
+  deleteTrainerButton.addEventListener("click", () => {
+    deleteTrainerDialog.showModal();
+  });
+
+  deleteTrainerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    const passwordResponse = await fetch("/trainers/:id", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (passwordResponse.ok) {
+      const res = await fetch(window.location.pathname, {
+        method: "DELETE",
+      });
+
+      if (res.ok) {
+        window.location.href = "/trainers";
+      }
+    } else {
+      console.log("Wrong Password!");
+    }
+
+    e.target.reset();
+    deleteTrainerDialog.close();
+  });
+</script>
