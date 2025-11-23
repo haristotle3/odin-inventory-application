@@ -23,6 +23,19 @@
         </li>
         <% }) %>
       </ul>
+      
+      <ul class="trainers-pokemon">
+        <% trainersPokemon.forEach((pokemon) => { %>
+        <li class="trainer-pokemon-image">
+          <a href="/pokemon/<%=pokemon.id%>">
+            <div class="pokemon-image-container">
+              <img src="<%=pokemon.image_path%>" alt="">
+              <span><%=pokemon.name %></span>
+            </div>
+          </a>
+        </li>
+        <% }) %>
+      </ul>
 
       <%- include("updateDeleteTrainer") %>
     </main>
