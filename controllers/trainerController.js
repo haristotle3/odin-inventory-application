@@ -20,3 +20,9 @@ export async function addTrainerController(req, res) {
 
   return;
 }
+
+export async function deleteTrainer(req, res) {
+  const trainerID = req.params.id;
+  await db.deleteTrainer(trainerID)
+  res.sendStatus(204);
+}
