@@ -1,7 +1,6 @@
 import db from "../models/db.js";
 import { unlink } from "fs/promises";
 import path from "path";
-import { debugPort } from "process";
 import { fileURLToPath } from "url";
 
 async function searchPokemonController(req, res) {
