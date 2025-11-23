@@ -8,5 +8,15 @@ export async function trainerDefaultController(req, res) {
 export async function trainerIDController(req, res) {
   const trainerID = req.params.id
   const row = await db.getTrainerByID(trainerID);
-  res.render("trainers", { trainers: row });
+  const trainersPokemon = await db.getAllPokemonOfTrainer(trainerID)
+  res.render("individualTrainers", { trainers: row, trainersPokemon });
+}
+
+export async function addTrainerController(req, res) {
+  const { newTrainerName, trainerDescription } = req.body;
+  const imagePath = "/images/trainers/" + req.file.filename;
+  await db.addNewTrainer(newTrainerName, trainerDescription, imagePath)
+  await trainerDefaultController(req, res);
+
+  return;
 }
