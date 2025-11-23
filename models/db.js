@@ -60,6 +60,12 @@ class Database {
     return rows;
   }
 
+  async getAllPokemonOfTrainer(trainerID) {
+    const query = "SELECT * FROM pokemon WHERE trainer_id = $1;";
+    const { rows } = await this.db.query(query, [trainerID]);
+    return rows;
+  }
+
   async addNewPokemon(name, type, description, imagePath, trainerID) {
     const query = "INSERT INTO pokemon (name, type, description, trainer_id, image_path) VALUES ($1, $2, $3, $4, $5);" 
     await this.db.query(query, [name, type, description, trainerID, imagePath]);
