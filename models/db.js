@@ -94,6 +94,12 @@ class Database {
     await this.db.query(query, [newTrainerName, trainerDescription, imagePath]);
     return;
   }
+
+  async deleteTrainer(trainerID) {
+    const query = "DELETE FROM trainers WHERE trainers.id = $1;";
+    await this.db.query(query, [trainerID]);
+    return;
+  }
 }
 
 const db = new Database();
