@@ -6,13 +6,42 @@
     <label for="trainerDestructivePassword">
       Password:
       <input
-        id="trainerDestructivePassword"
+        class="trainerDestructivePassword"
         name="destructivePassword"
         type="password"
       />
     </label>
-    <input type="submit" value="Yes" />
-    <button id="trainerCancelButton">No</button>
+    <label for="deleteTrainer">
+      Are you sure you want to delete?
+      <input type="submit" value="Yes" />
+      <button id="trainerCancelButton">No</button>
+    </label>
+  </form>
+</dialog>
+
+<dialog id="updateTrainerDialog">
+  <form>
+    <label>
+      New Name:
+      <input name="updatedTrainerName" type="text" />
+    </label>
+    <label>
+      Update Description:
+      <textarea
+        name="updatedTrainerDescription"
+        id="updatedTrainerDescription"
+      ></textarea>
+    </label>
+    <label for="trainerDestructivePassword">
+      Password:
+      <input
+        class="trainerDestructivePassword"
+        name="destructivePassword"
+        type="password"
+      />
+    </label>
+    <input type="submit" value="Update" />
+    <button id="updateTrainerCancelButton">Cancel</button>
   </form>
 </dialog>
 
@@ -24,10 +53,19 @@
     "#deleteTrainerDialog > form"
   );
 
+  const closeUpdateDialog = document.querySelector(
+    "#updateTrainerCancelButton"
+  );
   const updateTrainerButton = document.querySelector("#updateTrainerButton");
+  const updateTrainerDialog = document.querySelector("#updateTrainerDialog");
+  const updateTrainerForm = document.querySelector(
+    "#updateTrainerDialog > form"
+  );
 
-  closeTrainerDialog.addEventListener("click", () => {
+  closeTrainerDialog.addEventListener("click", (e) => {
+    e.preventDefault();
     deleteTrainerDialog.close();
+    deleteTrainerForm.reset();
   });
 
   deleteTrainerButton.addEventListener("click", () => {
@@ -61,5 +99,48 @@
 
     e.target.reset();
     deleteTrainerDialog.close();
+  });
+
+  closeUpdateDialog.addEventListener("click", (e) => {
+    e.preventDefault();
+    updateTrainerDialog.close();
+    updateTrainerForm.reset();
+  });
+
+  updateTrainerButton.addEventListener("click", () => {
+    updateTrainerDialog.showModal();
+  });
+
+  updateTrainerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+    const passwordResponse = await fetch("/trainers/:id", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (passwordResponse.ok) {
+      const res = await fetch(window.location.pathname, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if(res.ok) {
+        window.location.href = "/trainers"
+      } 
+    } else {
+      console.log("Wrong password!")
+    }
+
+    e.target.reset();
+    updateTrainerDialog.close();
   });
 </script>
