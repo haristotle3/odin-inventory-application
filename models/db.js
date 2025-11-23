@@ -43,7 +43,8 @@ class Database {
   }
 
   async filterPokemon(type, trainerID) {
-    const query = "SELECT pokemon.* FROM pokemon JOIN trainers ON pokemon.trainer_id = trainers.id WHERE type = COALESCE($1, type) AND trainers.id = COALESCE($2, trainers.id);"
+    const query =
+      "SELECT pokemon.* FROM pokemon JOIN trainers ON pokemon.trainer_id = trainers.id WHERE type = COALESCE($1, type) AND trainers.id = COALESCE($2, trainers.id);";
     const { rows } = await this.db.query(query, [type, trainerID]);
     return rows;
   }
@@ -67,7 +68,8 @@ class Database {
   }
 
   async addNewPokemon(name, type, description, imagePath, trainerID) {
-    const query = "INSERT INTO pokemon (name, type, description, trainer_id, image_path) VALUES ($1, $2, $3, $4, $5);" 
+    const query =
+      "INSERT INTO pokemon (name, type, description, trainer_id, image_path) VALUES ($1, $2, $3, $4, $5);";
     await this.db.query(query, [name, type, description, trainerID, imagePath]);
     return;
   }
@@ -85,12 +87,14 @@ class Database {
   }
 
   async updatePokemon(pokemonID, name, type, description) {
-    const query = "UPDATE pokemon SET name = $1, type = $2, description = $3 WHERE id = $4;";
+    const query =
+      "UPDATE pokemon SET name = $1, type = $2, description = $3 WHERE id = $4;";
     await this.db.query(query, [name, type, description, pokemonID]);
   }
 
   async addNewTrainer(newTrainerName, trainerDescription, imagePath) {
-    const query = "INSERT INTO trainers (name, description, image_path) VALUES ($1, $2, $3);"
+    const query =
+      "INSERT INTO trainers (name, description, image_path) VALUES ($1, $2, $3);";
     await this.db.query(query, [newTrainerName, trainerDescription, imagePath]);
     return;
   }
@@ -99,6 +103,12 @@ class Database {
     const query = "DELETE FROM trainers WHERE trainers.id = $1;";
     await this.db.query(query, [trainerID]);
     return;
+  }
+
+  async updateTrainer(trainerID, newTrainerName, newDescription) {
+    const query =
+      "UPDATE trainers SET name = $1, description = $2 WHERE id = $3;";
+    await this.db.query(query, [newTrainerName, newDescription, trainerID]);
   }
 }
 
