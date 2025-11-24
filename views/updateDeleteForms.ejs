@@ -23,7 +23,7 @@
 <!-- Update pokemon form -->
 <dialog id="updatePokemonDialog">
   <form>
-    <label for="pokemonName"> Name: <input type="text" required /> </label>
+    <label for="pokemonName"> Name: <input name="pokemonName" type="text" required /> </label>
     <label for="type">
       Type:
       <select name="type">
@@ -137,7 +137,7 @@
       if (updateResponse.ok) {
         window.location.href = "/pokemon";
       } else {
-        console.log("Password is incorrect!");
+        console.log("Update Failed!");
       }
     }
 
