@@ -16,7 +16,9 @@
   "main": "app.js",
   "scripts": {
     "dev": "node --watch app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "initdbLocal": "node models/initdb.js",
+    "initdbRemote": "node models/initdb.js prod"
   },
   "dependencies": {
     "body-scroll-lock-upgrade": "^1.1.0",

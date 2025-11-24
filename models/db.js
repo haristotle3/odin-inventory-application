@@ -3,13 +3,19 @@ import { Pool } from "pg";
 
 class Database {
   constructor() {
-    this.db = new Pool({
-      user: process.env.LOCAL_DB_USER,
-      password: process.env.LOCAL_DB_PASSWORD,
-      host: process.env.LOCAL_DB_HOST,
-      port: process.env.LOCAL_DB_PORT,
-      database: process.env.LOCAL_DB_DATABASE,
-    });
+    if (process.env.NODE_ENV == "prod") {
+      this.db = new Pool({
+        connectionString: process.env.DATABASE_URL,
+      });
+    } else {
+      this.db = new Pool({
+        user: process.env.LOCAL_DB_USER,
+        password: process.env.LOCAL_DB_PASSWORD,
+        host: process.env.LOCAL_DB_HOST,
+        port: process.env.LOCAL_DB_PORT,
+        database: process.env.LOCAL_DB_DATABASE,
+      });
+    }
   }
 
   async getAllTrainers() {
