@@ -2,10 +2,11 @@
 
 :root {
   --pink-red: rgb(245, 19, 79);
+  --deep-red: rgb(255, 30, 67);
+  --deep-red-hover: rgb(201, 17, 47);
 }
 
 /* START OF HEADER STYLING */
-
 
 * {
   margin: 0;
@@ -20,7 +21,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: rgb(255, 30, 67);
+  background-color: var(--deep-red);
 }
 
 .topnav * {
@@ -41,7 +42,7 @@
 }
 
 .topnav-items:hover {
-  background-color: rgb(201, 17, 47);
+  background-color: var(--deep-red-hover);
   border-radius: 0.75em;
 }
 
@@ -115,6 +116,99 @@ header #topnav-close-btn {
 }
 
 /* END OF HEADER STYLING */
+/* HERO SECTION */
+
+section.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4em;
+  text-align: center;
+}
+
+section.hero h1 {
+  font-size: 6em;
+}
+
+@media (width < 80em) {
+  section.hero h1 {
+    font-size: 4em;
+  }
+}
+
+@media (width < 57em) {
+  section.hero h1 {
+    font-size: 3em;
+  }
+}
+
+@media (width < 25em) {
+  section.hero {
+    margin: 2em;
+  }
+
+  section.hero h1 {
+    font-size: 2.5em;
+  }
+}
+
+section.hero p {
+  font-size: 1em;
+  color: rgba(94, 94, 94, 0.756);
+  font-style: italic;
+}
+
+/* END OF HERO SECTION */
+
+/* HERO DESCRIPTION */
+section.hero-description p {
+  text-align: center;
+  font-size: 1em;
+  margin: 6em;
+}
+
+@media (width < 35em) {
+  section.hero-description p {
+    margin: 2em;
+  }
+}
+/* END OF HERO DESCRIPTION */
+
+/* LINKS SECTION */
+section.links ul {
+  list-style-type: none;
+  margin: 4em;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+}
+
+section.links ul li button {
+  background-color: none;
+  border: none;
+  outline: none;
+}
+
+section.links ul li button a {
+  height: 2em;
+  width: 4.75em;
+  border-radius: 0.75em;
+  padding: 0.5em;
+  font-size: 1.5em;
+  border: 4px solid rgb(152, 0, 51);
+  background-color: var(--deep-red);
+}
+
+section.links ul li button a:hover {
+  background-color: var(--deep-red-hover);
+}
+
+section.links ul li button * {
+  color: white;
+}
+
+/* END OF HERO DESCRIPTION */
 
 img {
   width: 100%;
@@ -180,4 +274,3 @@ ul.pokemons {
   text-decoration: none;
   color: black;
 }
-
