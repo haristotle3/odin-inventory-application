@@ -92,6 +92,12 @@ class Database {
     await this.db.query(query, [name, type, description, pokemonID]);
   }
 
+  async searchTrainers(trainerPattern) {
+    const query = "SELECT * FROM trainers WHERE name ILIKE $1;";
+    const { rows } = await this.db.query(query, [`%${trainerPattern}%`]);
+    return rows;
+  }
+
   async addNewTrainer(newTrainerName, trainerDescription, imagePath) {
     const query =
       "INSERT INTO trainers (name, description, image_path) VALUES ($1, $2, $3);";
