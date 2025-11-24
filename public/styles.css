@@ -45,7 +45,8 @@ img {
   object-fit: cover;
 }
 
-.trainers {
+.trainers,
+.pokemons {
   margin: 1em;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15em, 18em));
@@ -54,11 +55,14 @@ img {
 }
 
 .trainers li ul,
-ul.trainers {
+.pokemons li ul,
+ul.trainers,
+ul.pokemons {
   list-style-type: none;
 }
 
-.trainer {
+.trainer,
+.pokemon {
   border: 2px solid black;
   text-align: center;
   height: 30em;
@@ -67,26 +71,36 @@ ul.trainers {
   border-radius: 1em;
 }
 
-.trainer-details {
+.trainer-details,
+.pokemon-details {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
 }
 
-.trainer-details li:last-child {
+.trainer-details li:last-child,
+.pokemon-details li:last-child {
   margin: auto 0;
 }
 
-.trainer-name {
+.trainer-name,
+.pokemon-name {
   font-size: 2rem;
 }
 
-.trainer-description {
+.trainer-description,
+.pokemon-description {
   padding: 1em;
   text-align: justify;
   font-size: 1rem;
   text-overflow: ellipsis;
+}
+
+.pokemon-card-link,
+.trainer-card-link {
+  text-decoration: none;
+  color: black;
 }
 
 @media (width >= 40em) {
