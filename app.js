@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import { indexRouter } from "./routes/routes.js";
+import indexRouter from "./routes/indexRouter.js";
 import trainerRouter from "./routes/trainerRouter.js";
 import pokemonRouter from "./routes/pokemonRouter.js";
 
@@ -21,9 +21,9 @@ app.use("/", indexRouter);
 app.use("/trainers", trainerRouter);
 app.use("/pokemon", pokemonRouter);
 
-app.listen(3000, (error) => {
+app.listen(process.env.PORT, (error) => {
   if (error) {
     throw error;
   }
-  console.log("Server running on port 3000");
+  console.log(`Server running on port ${process.env.PORT}`);
 });
