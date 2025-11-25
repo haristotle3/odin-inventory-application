@@ -1,69 +1,65 @@
 <!-- Filter Pokemon -->
-    <form action="/pokemon" method="GET">
-      <label for="type">Type:</label>
-      <select name="type" id="type">
-        <option value="None" <%= selected === "None" ? 'selected' : '' %> >None</option>
-        <% pokemonTypes.forEach((row) => { %>
-        <option value="<%=row.type%>" <%= selected === row.type ? "selected" : "" %> ><%=row.type %></option>
-        <% }); %>
-      </select>
+<div class="pokemon-form-wrapper">
+  <form action="/pokemon" method="GET" class="filter-pokemon-form">
+    <label for="type">Type:</label>
+    <select name="type" id="type">
+      <option value="None" <%=selected === "None" ? 'selected' : '' %> >None</option>
+      <% pokemonTypes.forEach((row) => { %>
+      <option value="<%=row.type%>" <%= selected === row.type ? "selected" : "" %> ><%=row.type %></option>
+      <% }); %>
+    </select>
+    <label for="trainerID">Trainer ID:</label>
+    <select name="trainerID" id="trainerID">
+      <option value="None">None</option>
+      <% trainerIDsNames.forEach((row) => { %>
+      <option value="<%=row.id %>"><%=row.id %></option>
+      <% }); %>
+    </select>
+    <input type="submit" value="Apply Filter">
+  </form>
+  <!-- Search Pokemon -->
+  <form action="/pokemon" method="GET" class="search-pokemon-form">
+    <label for="search">Search:</label>
+    <input type="text" name="search" id="search">
+    <input type="submit" value="Search">
+  </form>
+  <button id="openDialogButton">Add Pokemon</button>
+</div>
 
-      <label for="trainerID">Trainer ID:</label>
-      <select name="trainerID" id="trainerID">
-        <option value="None">None</option>
-        <% trainerIDsNames.forEach((row) => { %>
-        <option value="<%=row.id %>"><%=row.id %></option>
-        <% }); %>
-      </select>
-  
-      <input type="submit" value="Apply Filter">
-    </form>
+<!-- Add Pokemon -->
+<dialog id="addPokemonDialog">
+  <form action="/pokemon" method="POST" enctype="multipart/form-data">
+    <label for="name">Name: </label>
+    <input name="name" type="text" id="name" required>
 
-    <!-- Search Pokemon -->
-    <form action="/pokemon" method="GET">
-      <label for="search">Search</label>
-      <input type="text" name="search" id="search">
-      <input type="submit" value="Search">
-    </form>
+    <label for="type">Type: </label>
+    <select name="type" id="type">
+      <% pokemonTypes.forEach((row) => { %>
+      <option value="<%=row.type%>"><%=row.type%></option>
+      <% }) %>
+    </select>
 
-    <button id="openDialogButton">Add Pokemon</button>
+    <label for="description">Description: </label>
+    <textarea name="description" id="description" required></textarea>
 
-    <!-- Add Pokemon -->
-    <dialog id="addPokemonDialog">
-      <form action="/pokemon" method="POST" enctype="multipart/form-data">
-        <label for="name">Name: </label>
-        <input name="name" type="text" id="name" required>
-  
-        <label for="type">Type: </label>
-        <select name="type" id="type">
-          <% pokemonTypes.forEach((row) => { %>
-          <option value="<%=row.type%>"><%=row.type%></option>
-          <% }) %>
-        </select>
-  
-        <label for="description">Description: </label>
-        <textarea name="description" id="description" required></textarea>
-  
-        <label for="trainerID">Trainer ID:</label>
-        <select name="trainerID" id="trainerID">
-          <% trainerIDsNames.forEach((row) => { %>
-          <option value="<%=row.id %>"><%=row.name %> (#<%=row.id %>)</option>
-          <% }); %>
-        </select>
-  
-        <label for="photo">Photo</label>
-        <input name="photo" type="file" accept="image/png" required>
-  
-        <input type="submit" value="Add Pokemon">
-      </form>
-    </dialog>
+    <label for="trainerID">Trainer ID:</label>
+    <select name="trainerID" id="trainerID">
+      <% trainerIDsNames.forEach((row) => { %>
+      <option value="<%=row.id %>"><%=row.name %> (#<%=row.id %>)</option>
+      <% }); %>
+    </select>
 
-    <script>
-        const openDialogButton = document.getElementById("openDialogButton");
-        const dialog = document.getElementById("addPokemonDialog");
+    <label for="photo">Photo</label>
+    <input name="photo" type="file" accept="image/png" required>
 
-        openDialogButton.addEventListener("click", () => {
-          dialog.showModal();
-        });
-    </script>
-      
+    <input type="submit" value="Add Pokemon">
+  </form>
+</dialog>
+<script>
+    const openDialogButton = document.getElementById("openDialogButton");
+    const dialog = document.getElementById("addPokemonDialog");
+    openDialogButton.addEventListener("click", () => {
+      dialog.showModal();
+    });
+</script>
+  

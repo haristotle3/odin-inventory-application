@@ -5,11 +5,11 @@
   </head>
   <body>
     <%- include("header") %>
-    <main>
+    <main class="pokemon-main">
       <%- include("pokemonForms", { pokemonTypes, trainerIDsNames } ) %>
       <ul class="pokemons">
         <% pokemon.forEach((pm) => { %>
-        <li class="pokemon">
+        <li class="pokemon <%=pm.type%>">
           <a href="/pokemon/<%= pm.id %>" class="pokemon-card-link">
             <ul class="pokemon-details">
               <li>
@@ -17,8 +17,8 @@
               </li>
               <li class="pokemon-name"><%= pm.name %></li>
               <li class="pokemon-type"><%= pm.type %></li>
-              <li class="pokemon-trainer-id"><%= pm.trainer_id %></li>
-              <li class="pokemon-description"><%= pm.description %></li>
+              <!-- <li class="pokemon-trainer-id"><%= pm.trainer_id %></li> -->
+              <!-- <li class="pokemon-description"><%= pm.description %></li> -->
             </ul>
           </a>
         </li>
