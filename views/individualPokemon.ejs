@@ -5,29 +5,26 @@
   </head>
   <body>
     <%- include("header") %>
-    <main>
+    <main class="individual-pokemon-main">
       <%- include("pokemonForms", { pokemonTypes, trainerIDsNames, pokemon } )
       %>
-      <ul class="pokemons">
-        <li class="pokemon">
-          <a href="/pokemon/<%= pokemon.id %>" class="pokemon-card-link">
-            <ul class="pokemon-details">
-              <li>
-                <img
-                  src="<%= pokemon.image_path %>"
-                  alt="Image of <%= pokemon.name %>"
-                />
-              </li>
-              <li class="pokemon-name"><%= pokemon.name %></li>
-              <li class="pokemon-type"><%= pokemon.type %></li>
-              <li class="pokemon-trainer-id"><%= pokemon.trainer_id %></li>
-              <li class="pokemon-description"><%= pokemon.description %></li>
-            </ul>
-          </a>
-        </li>
-      </ul>
-
-      <%- include("updateDeleteForms", { pokemonTypes })%>
+      <div class="pokemon-individual pokemon <%= pokemon.type %>">
+        <a href="/pokemon/<%= pokemon.id %>" class="pokemon-card-link">
+          <ul class="pokemon-details">
+            <li>
+              <img
+                src="<%= pokemon.image_path %>"
+                alt="Image of <%= pokemon.name %>"
+              />
+            </li>
+            <li class="pokemon-name"><%= pokemon.name %></li>
+            <li class="pokemon-type"><%= pokemon.type %></li>
+            <li class="pokemon-trainer-id">#<%= pokemon.trainer_id %></li>
+            <li class="pokemon-description"><%= pokemon.description %></li>
+          </ul>
+        </a>
+        <%- include("updateDeleteForms", { pokemonTypes })%>
+      </div>
     </main>
   </body>
 </html>

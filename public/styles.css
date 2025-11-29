@@ -6,6 +6,8 @@
   --deep-red-hover: rgb(201, 17, 47);
   --soft-red: rgb(216, 19, 52);
   --soft-red: rgb(227, 17, 76);
+  --delete-red: rgb(215 50 77);
+  --update-red: #d90303b0;
 
   --normal-type: #a8a77a;
   --normal-type-bg: #a8a77a30;
@@ -551,6 +553,96 @@ ul.pokemons {
   }
 }
 /* END OF POKEMON MAIN */
+
+/* INDIVIDUAL POKEMON  */
+
+main.individual-pokemon-main {
+  display: flex;
+  height: 100%;
+}
+
+.pokemon-individual {
+  border: 2px solid black;
+  text-align: center;
+  overflow: hidden;
+  padding: 1em;
+  height: 32em;
+
+  width: 14em;
+  box-sizing: border-box;
+  margin: 2em auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.pokemon-individual > :nth-child(2) {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.pokemon-individual > button {
+  border-radius: 0.5em;
+  padding: 0.25em;
+}
+
+.pokemon-individual button#deletePokemonButton,
+.pokemon-individual button#updatePokemonButton {
+  color: white;
+  border: none;
+  outline: none;
+  border: 1px solid black;
+}
+
+.pokemon-individual button#deletePokemonButton {
+  background-color: var(--delete-red);
+}
+
+.pokemon-individual button#updatePokemonButton {
+  background-color: var(--update-red);
+}
+
+.pokemon-individual .pokemon-name {
+  font-size: 1.5em;
+}
+
+.pokemon-individual .pokemon-type {
+  font-size: 1em;
+}
+
+@media (width < 31.25em) {
+  .pokemon-individual {
+    padding: 0.5em;
+    height: 19em;
+    width: 9em;
+    margin: 0.5em minmax(0.5em, auto);
+  }
+
+  .pokemon-individual .pokemon-name {
+    font-size: 0.75em;
+  }
+
+  .pokemon-individual .pokemon-type {
+    font-size: 0.5em;
+  }
+
+  .pokemon-individual .pokemon-description,
+  .pokemon-individual .pokemon-trainer-id {
+    font-size: 0.65em;
+  }
+
+  .pokemon-individual button#deletePokemonButton,
+  .pokemon-individual button#updatePokemonButton {
+    font-size: 0.5em;
+    padding: 0.1em;
+  }
+}
+
+.pokemon-individual ul {
+  list-style-type: none;
+}
+
+/* END OF INDIVIDUAL POKEMON*/
 
 .trainer-details,
 .pokemon-details {
