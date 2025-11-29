@@ -25,9 +25,8 @@ export async function addTrainerController(req, res) {
   const { newTrainerName, trainerDescription } = req.body;
   const imagePath = "/images/trainers/" + req.file.filename;
   await db.addNewTrainer(newTrainerName, trainerDescription, imagePath);
-  await trainerDefaultController(req, res);
 
-  return;
+  return res.redirect(303, "/trainers");
 }
 
 async function deleteImage(image_path) {

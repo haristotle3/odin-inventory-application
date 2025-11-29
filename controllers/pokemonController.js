@@ -74,9 +74,8 @@ export async function addPokemonController(req, res) {
   const imagePath = "/images/pokemon/" + photoName;
 
   await db.addNewPokemon(name, type, description, imagePath, trainerID);
-  await pokemonDefaultController(req, res);
 
-  return;
+  return res.redirect(303, "/pokemon");
 }
 
 async function deleteImage(image_path) {
