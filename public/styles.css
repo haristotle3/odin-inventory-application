@@ -268,7 +268,7 @@ section.links ul li button * {
 main.pokemon-main {
   display: grid;
   grid-template-columns: 1fr 5fr;
-  height: 100%;
+  min-height: 90vh;
 }
 
 .pokemon-form-wrapper {
@@ -580,8 +580,7 @@ ul.pokemons {
 
 main.individual-pokemon-main {
   display: flex;
-  min-height: 100%;
-  height: auto;
+  min-height: 90vh;
 }
 
 .pokemon-individual {
@@ -945,7 +944,7 @@ ul.trainers-pokemon li span {
 /* TRAINERS PAGE */
 main.trainers-main {
   display: flex;
-  min-height: 100vh;
+  min-height: 90vh;
 }
 
 main.trainers-main ul.trainers {
@@ -962,6 +961,10 @@ main.trainers-main ul.trainers {
   main.trainers-main ul.trainers {
     padding: 0em;
   }
+}
+
+.delete-warning {
+  font-weight: bold;
 }
 
 /* END OF TRAINERS PAGE */

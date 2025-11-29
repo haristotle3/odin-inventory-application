@@ -112,6 +112,9 @@ class Database {
   }
 
   async deleteTrainer(trainerID) {
+    const deletePokemonQuery = "DELETE FROM pokemon WHERE trainer_id = $1";
+    await this.db.query(deletePokemonQuery, [trainerID]);
+    
     const query = "DELETE FROM trainers WHERE trainers.id = $1;";
     await this.db.query(query, [trainerID]);
     return;
