@@ -367,7 +367,8 @@ form.search-pokemon-form {
 
 /* TYPES */
 
-.pokemon.Normal .li.Normal {
+.pokemon.Normal,
+li.Normal {
   border: 2px solid var(--normal-type);
   background-color: var(--normal-type-bg);
 }
@@ -954,7 +955,6 @@ main.trainers-main ul.trainers {
   justify-content: center;
   gap: 1em;
   flex-wrap: wrap;
-
 }
 
 @media (width < 31.25em) {
