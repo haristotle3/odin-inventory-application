@@ -716,7 +716,6 @@ dialog > form > label {
 /* END OF POKEMON FORMS */
 
 /* INDIVIDUAL TRAINERS */
-
 main.individual-trainer-main {
   display: flex;
   min-height: 90vh;
@@ -903,7 +902,7 @@ button#deleteTrainerButton {
   }
   .trainer {
     padding: 0.5em;
-    height: 19em;
+    /* height: 19em; */
     width: 9em;
     margin: 0.5em minmax(0.5em, auto);
   }
@@ -941,3 +940,28 @@ ul.trainers-pokemon li {
 ul.trainers-pokemon li span {
   font-size: 0.8em;
 }
+/* END OF INDIVIDUAL TRAINERS */
+
+/* TRAINERS PAGE */
+main.trainers-main {
+  display: flex;
+  min-height: 100vh;
+}
+
+main.trainers-main ul.trainers {
+  padding: 2em;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+
+}
+
+@media (width < 31.25em) {
+  main.trainers-main ul.trainers {
+    padding: 0em;
+  }
+}
+
+/* END OF TRAINERS PAGE */

@@ -3,7 +3,7 @@
   <%- include("head") %>
   <body>
     <%- include("header") %>
-    <main>
+    <main class="trainers-main">
       <%- include("trainerForms") %>
       <ul class="trainers">
         <% trainers.forEach((trainer) => { %>
@@ -17,7 +17,7 @@
                 />
               </li>
               <li class="trainer-name"><%= trainer.name %></li>
-              <li class="trainer-description"><%= trainer.description %></li>
+              <!-- <li class="trainer-description"><%= trainer.description %></li> -->
             </ul>
           </a>
         </li>
