@@ -49,17 +49,26 @@
       <% }); %>
     </select>
 
-    <label for="photo">Photo</label>
+    <label for="photo">Photo:</label>
     <input name="photo" type="file" accept="image/png" required>
 
     <input type="submit" value="Add Pokemon">
+    <button id="addPokemonCloseDialog">Cancel</button>
   </form>
 </dialog>
 <script>
     const openDialogButton = document.getElementById("openDialogButton");
+    const closeDialogButton = document.getElementById("addPokemonCloseDialog")
     const dialog = document.getElementById("addPokemonDialog");
+    
     openDialogButton.addEventListener("click", () => {
       dialog.showModal();
     });
+
+    closeDialogButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      dialog.close();   
+    })
+    
 </script>
   

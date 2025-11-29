@@ -8,6 +8,9 @@
   --soft-red: rgb(227, 17, 76);
   --delete-red: rgb(215 50 77);
   --update-red: #d90303b0;
+  --form-red: #ed0039cf;
+  --form-button-red: #ed003959;
+  --form-button-red-hover: #a4002682;
 
   --normal-type: #a8a77a;
   --normal-type-bg: #a8a77a30;
@@ -643,6 +646,54 @@ main.individual-pokemon-main {
 }
 
 /* END OF INDIVIDUAL POKEMON*/
+/* POKEMON FORMS */
+
+dialog {
+  margin: auto;
+}
+
+dialog > form {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  gap: 0.4em;
+  background-color: var(--form-red);
+}
+
+dialog > form label {
+  color: white;
+}
+dialog > form input,
+dialog > form textarea {
+  padding: 0.3em;
+}
+
+dialog > form > textarea {
+  height: 3lh;
+  resize: none;
+}
+
+dialog > form > button,
+dialog > form > input[type="submit"] {
+  color: white;
+  background-color: var(--form-button-red);
+  border-radius: 0.5em;
+  outline: none;
+  border: 2px solid black;
+}
+
+dialog > form > button:hover,
+dialog > form > input[type="submit"]:hover {
+    background-color: var(--form-button-red-hover);
+}
+
+dialog > form > label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+/* END OF POKEMON FORMS */
 
 .trainer-details,
 .pokemon-details {
