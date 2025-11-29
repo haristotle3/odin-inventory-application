@@ -18,7 +18,7 @@ export async function trainerIDController(req, res) {
   const trainerID = req.params.id;
   const row = await db.getTrainerByID(trainerID);
   const trainersPokemon = await db.getAllPokemonOfTrainer(trainerID);
-  res.render("individualTrainers", { trainers: row, trainersPokemon });
+  res.render("individualTrainers", { trainers: row[0], trainersPokemon });
 }
 
 export async function addTrainerController(req, res) {

@@ -62,7 +62,8 @@
 
 html,
 body {
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
 }
 
 .topnav {
@@ -366,97 +367,115 @@ form.search-pokemon-form {
 
 /* TYPES */
 
-.pokemon.Normal {
+.pokemon.Normal .li.Normal {
   border: 2px solid var(--normal-type);
   background-color: var(--normal-type-bg);
 }
 
-.pokemon.Fire {
+.pokemon.Fire,
+li.Fire {
   border: 2px solid var(--fire-type);
   background-color: var(--fire-type-bg);
 }
 
-.pokemon.Water {
+.pokemon.Water,
+li.Water {
   border: 2px solid var(--water-type);
   background-color: var(--water-type-bg);
 }
 
-.pokemon.Electric {
+.pokemon.Electric,
+li.Electric {
   border: 2px solid var(--electric-type);
   background-color: var(--electric-type-bg);
 }
 
-.pokemon.Grass {
+.pokemon.Grass,
+li.Grass {
   border: 2px solid var(--grass-type);
   background-color: var(--grass-type-bg);
 }
 
-.pokemon.Ice {
+.pokemon.Ice,
+li.Ice {
   border: 2px solid var(--ice-type);
   background-color: var(--ice-type-bg);
 }
 
-.pokemon.Fighting {
+.pokemon.Fighting,
+li.Fighting {
   border: 2px solid var(--fighting-type);
   background-color: var(--fighting-type-bg);
 }
 
-.pokemon.Poison {
+.pokemon.Poison,
+li.Poison {
   border: 2px solid var(--poison-type);
   background-color: var(--poison-type-bg);
 }
 
-.pokemon.Ground {
+.pokemon.Ground,
+li.Ground {
   border: 2px solid var(--ground-type);
   background-color: var(--ground-type-bg);
 }
 
-.pokemon.Flying {
+.pokemon.Flying,
+li.Flying {
   border: 2px solid var(--flying-type);
   background-color: var(--flying-type-bg);
 }
 
-.pokemon.Psychic {
+.pokemon.Psychic,
+li.Psychic {
   border: 2px solid var(--psychic-type);
   background-color: var(--psychic-type-bg);
 }
 
-.pokemon.Bug {
+.pokemon.Bug,
+li.Bug {
   border: 2px solid var(--bug-type);
   background-color: var(--bug-type-bg);
 }
 
-.pokemon.Rock {
+.pokemon.Rock,
+li.Rock {
   border: 2px solid var(--rock-type);
   background-color: var(--rock-type-bg);
 }
 
-.pokemon.Ghost {
+.pokemon.Ghost,
+li.Ghost {
   border: 2px solid var(--ghost-type);
   background-color: var(--ghost-type-bg);
 }
 
-.pokemon.Dragon {
+.pokemon.Dragon,
+li.Dragon {
   border: 2px solid var(--dragon-type);
   background-color: var(--dragon-type-bg);
 }
 
-.pokemon.Dark {
+.pokemon.Dark,
+li.Dark {
   border: 2px solid var(--dark-type);
   background-color: var(--dark-type-bg);
 }
 
-.pokemon.Steel {
+.pokemon.Steel,
+li.Steel {
   border: 2px solid var(--steel-type);
   background-color: var(--steel-type-bg);
 }
 
-.pokemon.Fairy {
+.pokemon.Fairy,
+li.Fairy {
   border: 2px solid var(--fairy-type);
   background-color: var(--fairy-type-bg);
 }
 
-.pokemon.Stellar {
+.pokemon.Stellar,
+li.Stellar {
   border: 2px solid var(--stellar-type);
   background-color: var(--stellar-type-bg);
 }
@@ -561,7 +580,8 @@ ul.pokemons {
 
 main.individual-pokemon-main {
   display: flex;
-  height: 100%;
+  min-height: 100%;
+  height: auto;
 }
 
 .pokemon-individual {
@@ -684,7 +704,7 @@ dialog > form > input[type="submit"] {
 
 dialog > form > button:hover,
 dialog > form > input[type="submit"]:hover {
-    background-color: var(--form-button-red-hover);
+  background-color: var(--form-button-red-hover);
 }
 
 dialog > form > label {
@@ -695,34 +715,229 @@ dialog > form > label {
 
 /* END OF POKEMON FORMS */
 
-.trainer-details,
-.pokemon-details {
+/* INDIVIDUAL TRAINERS */
+
+main.individual-trainer-main {
+  display: flex;
+  min-height: 90vh;
+}
+
+.individual-trainer-form-wrapper {
+  border-top: 1px solid rgba(255, 255, 255, 0.742);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: 100%;
+  padding: 1em 2em;
+  background-color: var(--soft-red);
+  gap: 1em;
 }
 
-.trainer-details li:last-child,
-.pokemon-details li:last-child {
-  margin: auto 0;
+.individual-trainer-form-wrapper button,
+.individual-trainer-form-wrapper input[type="submit"] {
+  color: white;
+  padding: 0.5em;
+  background-color: rgb(197, 14, 54);
+  border: 2px solid black;
+  outline: none;
+  border-radius: 1em;
 }
 
-.trainer-name,
-.pokemon-name {
-  font-size: 2rem;
+.individual-trainer-form-wrapper button:hover,
+.individual-trainer-form-wrapper input[type="submit"]:hover {
+  background-color: rgb(105, 7, 29);
 }
 
-.trainer-description,
-.pokemon-description {
+.individual-trainer-form-wrapper input,
+.individual-trainer-form-wrapper select {
+  padding: 0.4em 0.5em;
+  border-radius: 1em;
+  border: 2px solid black;
+  outline: none;
+}
+
+.individual-trainer-form-wrapper label {
+  color: white;
+}
+
+form.search-trainer-form {
+  display: flex;
+  gap: 0.2em;
+  flex-direction: column;
+}
+
+form.search-trainer-form label[for="trainerName"] {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (width < 37.5em) {
+  main.pokemon-main {
+    grid-template-columns: 1fr 7fr;
+  }
+
+  .individual-trainer-form-wrapper {
+    padding: 0.5em 1em;
+    gap: 0.75em;
+  }
+
+  .individual-trainer-form-wrapper button,
+  .individual-trainer-form-wrapper input,
+  .individual-trainer-form-wrapper input,
+  .individual-trainer-form-wrapper select {
+    width: 10em;
+  }
+}
+
+@media (width < 28.125em) {
+  .individual-trainer-form-wrapper button,
+  .individual-trainer-form-wrapper input,
+  .individual-trainer-form-wrapper input,
+  .individual-trainer-form-wrapper select {
+    width: 7em;
+  }
+}
+
+@media (width < 25em) {
+  .individual-trainer-form-wrapper * {
+    font-size: 0.75em;
+  }
+
+  .individual-trainer-form-wrapper button,
+  .individual-trainer-form-wrapper input,
+  .individual-trainer-form-wrapper input,
+  .individual-trainer-form-wrapper select {
+    width: 6.5em;
+  }
+}
+
+.trainer-pokemon-container {
+  margin: 0 auto;
+  display: flex;
+  gap: 2em;
+  align-items: flex-start;
+  padding: 2em;
+}
+
+.trainer {
+  border: 2px solid black;
+  text-align: center;
+  overflow: hidden;
   padding: 1em;
-  text-align: justify;
-  font-size: 1rem;
-  text-overflow: ellipsis;
+
+  width: 14em;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  flex-shrink: 0;
 }
 
-.pokemon-card-link,
-.trainer-card-link {
-  text-decoration: none;
-  color: black;
+.trainer-name {
+  font-weight: 500;
+  font-size: 1.4em;
+}
+
+button#updateTrainerButton,
+button#deleteTrainerButton {
+  color: white;
+  outline: none;
+  border: 2px solid black;
+  padding: 0.2em;
+  border-radius: 0.4em;
+}
+
+dialog input[type="submit"],
+dialog button {
+  color: white;
+  outline: none;
+  border: 2px solid black;
+  padding: 0.2em;
+  border-radius: 0.4em;
+  background-color: var(--form-button-red);
+}
+
+dialog input[type="submit"]:hover,
+dialog button:hover {
+  background-color: var(--form-button-red-hover);
+}
+
+button#updateTrainerButton {
+  background-color: var(--update-red);
+}
+button#deleteTrainerButton {
+  background-color: var(--delete-red);
+}
+
+.trainer ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+@media (width < 56.25em) {
+  .trainer-pokemon-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trainer-name {
+    font-size: 0.85em;
+  }
+
+  .trainer-description {
+    font-size: 0.75em;
+  }
+
+  .trainer button#updateTrainerButton,
+  .trainer button#deleteTrainerButton {
+    font-size: 0.6em;
+    padding: 0.2em;
+  }
+}
+
+@media (width < 31.25em) {
+  .trainer-pokemon-container {
+    padding: 0;
+  }
+  .trainer {
+    padding: 0.5em;
+    height: 19em;
+    width: 9em;
+    margin: 0.5em minmax(0.5em, auto);
+  }
+
+  .trainer-name {
+    font-size: 0.75em;
+  }
+
+  .trainer-description {
+    font-size: 0.65em;
+  }
+
+  .trainer button#updateTrainerButton,
+  .trainer button#deleteTrainerButton {
+    font-size: 0.5em;
+    padding: 0.1em;
+  }
+}
+
+ul.trainers-pokemon {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+ul.trainers-pokemon li {
+  width: 5em;
+  text-align: center;
+  padding: 0.4em;
+}
+
+ul.trainers-pokemon li span {
+  font-size: 0.8em;
 }

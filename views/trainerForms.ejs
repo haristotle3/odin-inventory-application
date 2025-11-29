@@ -1,10 +1,13 @@
-<form action="/trainers" method="GET">
-  <label for="trainerName">
-    Name:
-    <input id="trainerName" type="text" name="trainerName" required/>
-  </label>
-  <input type="submit" value="Search" />
-</form>
+<div class="individual-trainer-form-wrapper">
+  <form action="/trainers" method="GET" class="search-trainer-form">
+    <label for="trainerName">
+      Name:
+      <input id="trainerName" type="text" name="trainerName" required/>
+    </label>
+    <input type="submit" value="Search" />
+  </form>
+  <button id="addNewTrainerButton">Add New Trainer</button>
+</div>
 
 <dialog id="addNewTrainerDialog">
   <form action="/trainers" method="POST" enctype="multipart/form-data">
@@ -24,7 +27,6 @@
   </form>
 </dialog>
 
-<button id="addNewTrainerButton">Add New Trainer</button>
 
 <script>
   const addTrainerButton = document.querySelector("#addNewTrainerButton");
